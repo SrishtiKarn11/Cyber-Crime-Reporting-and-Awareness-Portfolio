@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0b3c5d,#328cc1);
+    height:100vh;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+">
+
+<div style="
+    background:white;
+    width:380px;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+">
+
+    <h2 style="text-align:center; color:#0b3c5d;">📝 User Registration</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input type="text" name="username" required
+               style="width:100%; padding:10px; margin:8px 0 15px;">
+
+        <label>Password</label>
+        <input type="password" name="password1" required
+               style="width:100%; padding:10px; margin:8px 0 15px;">
+
+        <label>Confirm Password</label>
+        <input type="password" name="password2" required
+               style="width:100%; padding:10px; margin:8px 0 20px;">
+
+        <button type="submit"
+            style="
+            background:#0b3c5d;
+            color:white;
+            padding:12px;
+            border:none;
+            width:100%;
+            border-radius:4px;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            ">
+            Register
+        </button>
+    </form>
+
+    <p style="margin-top:20px; text-align:center; font-size:14px;">
+        Already have an account?
+        <a href="/accounts/login/" style="color:#328cc1; font-weight:bold;">
+            Login here
+        </a>
+    </p>
+
+</div>
+
+</body>
+</html>

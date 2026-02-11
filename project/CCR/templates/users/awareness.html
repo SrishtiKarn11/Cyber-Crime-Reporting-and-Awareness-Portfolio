@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Awareness</title>
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right, rgba(50,140,193,0.25), transparent 60%),
+        radial-gradient(circle at bottom left, rgba(11,60,93,0.25), transparent 60%),
+        linear-gradient(135deg,#eef2f5,#dbe4ee);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+">
+
+<div style="
+    width:90%;
+    max-width:900px;
+    padding:20px;
+">
+
+    <h2 style="
+        color:#0b3c5d;
+        text-align:center;
+        margin-bottom:35px;
+        letter-spacing:1px;
+    ">
+    🛡️ Cyber Awareness & Safety Tips
+    </h2>
+
+    {% for post in posts %}
+    <div style="
+        background:white;
+        padding:28px;
+        margin-bottom:25px;
+        border-radius:10px;
+        box-shadow:
+            0 12px 30px rgba(0,0,0,0.12),
+            inset 0 0 0 1px #e6eef5;
+        border-left:6px solid #328cc1;
+        position:relative;
+    ">
+        <h3 style="
+            margin-top:0;
+            color:#328cc1;
+            letter-spacing:0.5px;
+        ">
+            {{ post.title }}
+        </h3>
+
+        <p style="
+            color:#444;
+            line-height:1.7;
+            font-size:15px;
+        ">
+            {{ post.content }}
+        </p>
+
+        <small style="
+            color:#777;
+            display:block;
+            margin-top:10px;
+        ">
+            📅 Posted on {{ post.created_at }}
+        </small>
+    </div>
+    {% empty %}
+    <p style="text-align:center;">No awareness posts available.</p>
+    {% endfor %}
+
+    <div style="text-align:center; margin-top:40px;">
+        <a href="/"
+           style="
+           padding:12px 22px;
+           background:#0b3c5d;
+           color:white;
+           text-decoration:none;
+           border-radius:25px;
+           font-weight:bold;
+           box-shadow:0 6px 15px rgba(0,0,0,0.2);
+           ">
+           ⬅ Back to Home
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

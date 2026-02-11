@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Status</title>
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top left, rgba(50,140,193,0.25), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(11,60,93,0.25), transparent 60%),
+        linear-gradient(135deg,#eef2f5,#dbe4ee);
+    display:flex;
+    justify-content:center;
+    padding-top:40px;
+">
+
+<div style="width:90%; max-width:900px;">
+
+    <h2 style="
+        color:#0b3c5d;
+        text-align:center;
+        margin-bottom:20px;
+        margin-top:0;
+    ">
+        📄 My Complaint Status
+    </h2>
+
+    <div style="
+        background:white;
+        padding:25px;
+        border-radius:10px;
+        box-shadow:0 12px 30px rgba(0,0,0,0.15);
+    ">
+
+        <table style="
+            width:100%;
+            border-collapse:collapse;
+            font-size:14px;
+        ">
+
+            <tr style="background:#0b3c5d; color:white;">
+                <th style="padding:12px;">Crime Type</th>
+                <th style="padding:12px;">Description</th>
+                <th style="padding:12px;">Status</th>
+                <th style="padding:12px;">Date</th>
+            </tr>
+
+            {% for c in complaints %}
+            <tr style="border-bottom:1px solid #ddd;">
+                <td style="padding:10px;">{{ c.crime_type }}</td>
+                <td style="padding:10px;">{{ c.description }}</td>
+
+                {% if c.status == 'Resolved' %}
+                <td style="padding:10px; font-weight:bold; color:green;">
+                    {{ c.status }}
+                </td>
+                {% else %}
+                <td style="padding:10px; font-weight:bold; color:#b22222;">
+                    {{ c.status }}
+                </td>
+                {% endif %}
+
+                <td style="padding:10px;">{{ c.created_at }}</td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="4" style="padding:15px; text-align:center;">
+                    No complaints submitted yet.
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/dashboard/"
+           style="
+           padding:10px 18px;
+           background:#328cc1;
+           color:white;
+           text-decoration:none;
+           border-radius:4px;
+           font-weight:bold;
+           ">
+           ⬅ Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

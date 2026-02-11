@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Awareness</title>
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#eef2f5,#d9e2ec);
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+">
+
+<div style="width:90%; max-width:1000px;">
+
+    <h2 style="
+        color:#b22222;
+        text-align:center;
+        margin-bottom:25px;
+    ">
+    📢 Cyber Awareness Management
+    </h2>
+
+    <!-- FORM + POSTS WRAPPER -->
+    <div style="display:flex; gap:30px; align-items:flex-start;">
+
+        <!-- POST FORM -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:40%;
+            border-radius:8px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        ">
+            <h3 style="margin-top:0; color:#0b3c5d;">Post Awareness</h3>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label>Title</label>
+                <input type="text" name="title" required
+                       style="width:100%; padding:10px; margin:8px 0 15px;">
+
+                <label>Content</label>
+                <textarea name="content" rows="4" required
+                          style="width:100%; padding:10px; margin-top:8px;"></textarea>
+
+                <button type="submit"
+                    style="
+                    margin-top:15px;
+                    background:#b22222;
+                    color:white;
+                    padding:12px;
+                    border:none;
+                    width:100%;
+                    border-radius:4px;
+                    font-weight:bold;
+                    cursor:pointer;
+                    ">
+                    Post Awareness
+                </button>
+            </form>
+        </div>
+
+        <!-- POSTS -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:60%;
+            border-radius:8px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            max-height:420px;
+            overflow-y:auto;
+        ">
+            <h3 style="margin-top:0; color:#0b3c5d;">Existing Posts</h3>
+
+            {% for p in posts %}
+            <div style="
+                padding:15px;
+                margin-bottom:15px;
+                border-left:5px solid #328cc1;
+                background:#f9fbfd;
+            ">
+                <h4 style="margin:0;">{{ p.title }}</h4>
+                <p style="margin-top:8px; color:#444;">{{ p.content }}</p>
+            </div>
+            {% empty %}
+            <p>No awareness posts available.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:25px;">
+        <a href="/admin-panel/dashboard/"
+           style="
+           padding:10px 15px;
+           background:#777;
+           color:white;
+           text-decoration:none;
+           border-radius:4px;
+           ">
+           ⬅ Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
