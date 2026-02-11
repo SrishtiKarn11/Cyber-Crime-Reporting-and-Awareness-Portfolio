@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Complaint</title>
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#eef2f5,#d9e2ec);
+    padding:40px;
+">
+
+<h2 style="
+    color:#b22222;
+    margin-bottom:20px;
+">
+🔄 Update Complaint Status
+</h2>
+
+<!-- COMPLAINT DETAILS -->
+<div style="
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    width:450px;
+">
+
+    <p><b>User:</b> {{ complaint.user.username }}</p>
+    <p><b>Crime Type:</b> {{ complaint.crime_type }}</p>
+    <p><b>Description:</b> {{ complaint.description }}</p>
+
+    <hr style="margin:20px 0;">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label style="font-weight:bold;">Case Status</label><br>
+        <select name="status"
+                style="
+                width:100%;
+                padding:10px;
+                margin-top:8px;
+                ">
+            <option value="Pending"
+                {% if complaint.status == "Pending" %}selected{% endif %}>
+                Pending
+            </option>
+            <option value="Resolved"
+                {% if complaint.status == "Resolved" %}selected{% endif %}>
+                Resolved
+            </option>
+        </select>
+
+        <button type="submit"
+            style="
+            margin-top:20px;
+            background:#b22222;
+            color:white;
+            padding:12px;
+            border:none;
+            width:100%;
+            border-radius:4px;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            ">
+            Update Status
+        </button>
+    </form>
+
+</div>
+
+<br>
+
+<a href="/admin-panel/complaints/"
+   style="
+   padding:10px 15px;
+   background:#777;
+   color:white;
+   text-decoration:none;
+   border-radius:4px;
+   ">
+   ⬅ Back to Complaints
+</a>
+
+</body>
+</html>
